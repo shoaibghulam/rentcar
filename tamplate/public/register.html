@@ -1,0 +1,87 @@
+{%extends 'public/layout/base.html'%}
+{% load static %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="form-title"> Register Vendor </h1>
+            
+            <form role="form" class="reg-vendor" action="" method="POST">
+                
+                {% csrf_token %}
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" Name="firstName" placeholder="First Name" aria-label="First Name" required>
+
+                    </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" Name="lastName" placeholder="Last Name" aria-label="Last Name" required>
+
+                    </div>
+                    
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-building"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="companyName" placeholder="Company Name" aria-label="Company Name" required>
+
+                    </div>
+               <!-- input start -->
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="contactNo" placeholder="Contact No" aria-label="Contact No" required>
+
+                    </div>
+                    <!-- input end -->
+               <!-- input start -->
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email" required>
+                   
+                    </div>
+                    <p class="text-danger" style="font-size:10px">
+                      {% for message in messages %}
+                      {{message}} 
+                     {% endfor %}
+                     <p>
+                    <!-- input end -->
+               <!-- input start -->
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="Password" aria-label="password" required>
+
+                    </div>
+                    <!-- input end -->
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+                  
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-pink rd-5 mb-4"/><br>
+                        <a href="#" class="item modal-ui-trigger" data-trigger-for="modal02">
+                          <span>Already account Log In</span>
+                      </a>
+                    </div>
+</form>            
+        </div>
+        <div class="col-md-6 text-center">
+        <img src="{% static 'public/images/signup.jpg'%}">
+        </div>
+        
+    </div>
+</div>
+{% endblock body %}

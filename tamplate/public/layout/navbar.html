@@ -1,0 +1,114 @@
+{% load static %}
+<header class="header-section ths header-shadow header-sticky header-slide-up header-transparent is-transparent equal-tablet-header-items equal-mobile-header-items">
+    <div class="header-content">
+
+        <div class="ui container grid">
+            <div class="header-item header-left">
+            	
+            </div>
+
+            <div class="header-item header-center flex-grow-true">
+               
+<a class="logo item" href="/">
+	<img src="{% static '' %}public/assets/images/logo-mycar.png" srcset="{% static '' %}public/assets/images/logo-mycar.png 1x, assets/images/logo-mycar@2x.png 2x" alt="myCar logo" class="logo-transparent">
+
+	<img src="{% static '' %}public/assets/images/logo-mycar.png" srcset="{% static '' %}public/assets/images/logo-mycar.png 1x, assets/images/logo-mycar@2x.png 2x" alt="myCar logo">
+</a>
+            </div>
+            
+            <div class="header-item header-right flex-align-right">
+                
+                <!-- Sidemenu Trigger -->
+                <a class="sidemenu-trigger hamburger item" data-trigger-for="menu01">
+                   
+                    <span class="hamburger-box">
+                      <span class="hamburger-inner"></span>
+                    </span>
+                </a>
+                
+              
+                <!-- Include Menu -->
+                
+<!-- Header Menu-->
+                
+    <div class="menu-default burger-sidemenu sidemenu-open-right icons-left profile-priority slide-out-sq dimmed dropdown-open-right" data-burger="menu01">
+       
+       <a class="sidemenu-trigger xclose-sq hamburger hamburger-elastic item" data-trigger-for="menu01">
+
+			<span class="hamburger-box">
+			  <span class="hamburger-inner"></span>
+			</span>
+		</a>
+        
+        <ul class="main-menu">
+            {% if request.session.userlogin %}
+            <li class="profile-item has-submenu">
+                <a href="#" class="item">
+                    <span>{{request.session.username}}</span>
+                    <img src="{{request.session.img}}" alt="">
+                </a>
+                <ul class="submenu">
+                    <li><a href="/user_profile" class="item"><span>My Profile</span></a></li>
+                    <li><a href="/my_trips" class="item"><span>My Trips</span></a>
+                    </li>
+                    <li>
+                        <hr>
+                    </li>
+                    <li><a href="/logout" class="item"><span>Log Out</span></a></li>
+                </ul>
+            </li> 
+            {% endif %}
+           
+            
+            {% if request.session.login %}
+            <li class="profile-item has-submenu">
+                <a href="#" class="item">
+                    <span>{{request.session.name}}</span>
+                    <img src="{{request.session.userimg}}" alt="">
+                </a>
+                <ul class="submenu">
+                    <li><a href="/vendor" class="item"><span>My Profile</span></a></li>
+                    <li><a href="/new_orders" class="item"><span>My Trips</span></a>
+                    </li>
+                    <li>
+                        <hr>
+                    </li>
+                    <li><a href="/logout" class="item"><span>Log Out</span></a></li>
+                </ul>
+            </li> 
+            {% endif %}
+
+            {% if not request.session.login and not request.session.userlogin %}
+            <li><a href="/register" class="item">
+                <span>Become a Vendor</span>
+            </a>
+        </li>
+            <li><a href="/vendorlogin" class="item">
+                <span>Vendorlogin</span>
+            </a>
+        </li>
+        
+        
+        
+        <li><a href="#" class="item modal-ui-trigger" data-trigger-for="modal01">
+                <span>Sign Up</span>
+            </a>
+        </li>
+
+        <li><a href="#" class="item modal-ui-trigger" data-trigger-for="modal02">
+                <span>Log In</span>
+            </a>
+        </li>
+
+            {% endif %}
+           
+        </ul>
+    </div>
+
+<!-- End of Header Menu-->
+                
+            </div>
+        </div>
+        
+    </div>    
+</header>

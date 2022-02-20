@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap');
+.form-title{
+    font-weight: 600;
+    color: #222;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+}
+.hamburger-inner , .hamburger-inner:before , .hamburger-inner::after {
+    background-color: #EF8A90 !important;
+}
+
+.reg-vendor .form-control{
+    border:none ;
+    border-bottom: 2px solid #FFD5BE;
+    border-bottom-right-radius: 3px;
+}
+.reg-vendor .input-group-text{
+    border:none;
+    background:none;
+    border-bottom: 2px solid #FFD5BE;
+}
+
+.btn-pink {
+    color: #fff;
+    background-color: #E4818D !important;
+    border-color: #E4818D !important;
+}
+
+.reg-vendor .form-control:focus{
+    border:none ;
+    border-bottom: 2px solid #FFD5BE;
+    border-bottom-right-radius: 3px;
+}
+
+.reg-vendor .btn-pink:hover{
+    background-color: rgb(174, 86, 97) !important;
+    border-color: #cf727d !important;
+}
+.rd-5{
+    border-radius: 5px !important;
+}
+.add-listing-content {
+    /* overflow:hidden !important; */
+   height: auto !important;
+}
+.mb-60{
+    margin-bottom: 60px !important;
+}
+.image-sqs{
+    width: 100%;
+    height: 100%;
+}
+
+.rating {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+   
+  }
+  
+  .rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .rating label:last-child {
+    position: static;
+  }
+  
+  .rating label:nth-child(1) {
+    z-index: 5;
+  }
+  
+  .rating label:nth-child(2) {
+    z-index: 4;
+  }
+  
+  .rating label:nth-child(3) {
+    z-index: 3;
+  }
+  
+  .rating label:nth-child(4) {
+    z-index: 2;
+  }
+  
+  .rating label:nth-child(5) {
+    z-index: 1;
+  }
+  
+  .rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .rating label .icon {
+    float: left;
+    color: transparent;
+    font-size:50px;
+  }
+  
+  .rating label:last-child .icon {
+    color: #000;
+  }
+  
+  .rating:not(:hover) label input:checked ~ .icon,
+  .rating:hover label:hover input ~ .icon {
+    color: #09f;
+  }
+  
+  .rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
+  }
+
+
+  /* new cars for vendor start */
+  #root{
+    margin-top:30px;
+  }
+  .c-dashboardInfo {
+    margin-bottom: 15px;
+  }
+  .c-dashboardInfo .wrap {
+    background: #ffffff;
+    box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 25px 20px;
+    height: 100%;
+  }
+  .c-dashboardInfo__title,
+  .c-dashboardInfo__subInfo {
+    color: #6c6c6c;
+    font-size: 1.18em;
+  }
+  .c-dashboardInfo span {
+    display: block;
+  }
+  .c-dashboardInfo__count {
+    font-weight: 600;
+    font-size: 2.5em;
+    line-height: 64px;
+    color: #323c43;
+  }
+  .c-dashboardInfo .wrap:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    content: "";
+  }
+  
+  .c-dashboardInfo:nth-child(1) .wrap:after {
+    background: linear-gradient(82.59deg, #00c48c 0%, #00a173 100%);
+  }
+  .c-dashboardInfo:nth-child(2) .wrap:after {
+    background: linear-gradient(81.67deg, #0084f4 0%, #1a4da2 100%);
+  }
+  .c-dashboardInfo:nth-child(3) .wrap:after {
+    background: linear-gradient(69.83deg, #0084f4 0%, #00c48c 100%);
+  }
+  .c-dashboardInfo:nth-child(4) .wrap:after {
+    background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
+  }
+  .c-dashboardInfo__title svg {
+    color: #d7d7d7;
+    margin-left: 5px;
+  }
+  .MuiSvgIcon-root-19 {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 24px;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  
+  /* new cars for vendor end */
+  .custom-search{
+    z-index: 8;
+    background-color: #fff;
+    width: 40%;
+   
+    position: absolute;
+    top: 38%;
+    padding-bottom: 10px;
+    border-radius: 14px;
+    left: 2%;
+  }
+  .search-input{
+    padding:20px;
+    z-index: 10 ;
+  }
+  .select2-container .select2-selection--single {
+    height:40px !important;
+   
+    padding-top: 5px !important;
+  }
+
+  .result-search{
+    z-index: 8;
+    background-image: linear-gradient(to right top, #1b282f, #212e35, #28353b, #2e3b42, #354248);
+    color:#fff;
+   
+   
+    padding-bottom: 10px;
+    border-radius: 14px;
+    left: 2%;
+  }

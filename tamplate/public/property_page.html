@@ -1,0 +1,327 @@
+{% extends 'public/layout/base.html' %}
+{% load static %}
+{% block body %}
+
+    
+<div class="ui layout">
+    <!-- grid -->
+    <div class="ui grid container stackable centered">
+        <div class="row">
+            <div class="ui twelve wide tablet twelve wide computer ten wide widescreen ten wide large screen column property-section-boxed">
+              
+                <br>
+               
+                <div class="white-section shadow-sq">
+                    <div class="inner-section">
+                    
+                        <div class="ui grid">
+                            <div class="row">
+                               
+                                <!-- Left-->
+                                <div class="ui twelve wide mobile six wide computer column">
+                                   
+                                    <!-- Slick aici-->
+                                    
+                                    <div class="property-image-wrapper">
+                                        <div class="sq-slick carousel-sq" data-center-mode="true" data-center-padding="0" data-show-slides="1" data-scroll-slides="1" data-mobile-center-padding="0" data-tablet-arrows="false" data-mobile-arrows="false" data-fade="true" data-ease="linear" data-speed="500" data-tablet-fade="false" data-tablet-ease="ease" data-tablet-speed="300" data-mobile-fade="false" data-mobile-ease="ease" data-mobile-speed="300">
+                                           
+                                            <!-- Slide 01-->
+                                            <div>
+                                                <div class="caption-content"></div>
+                                                <div class="image-wrapper">
+                                                    <div class="image-inner">
+                                                        <img class="image-sq slick-img" src="{{data.photo1.url}}" alt="" data-gallery="gallery" data-caption="Car 01">
+                                                    </div>
+                                                </div>
+                                        
+                                            </div>
+                                        
+                                            <!-- Slide 02-->
+                                            <div>
+                                                <div class="caption-content"></div>
+                                        
+                                                <div class="image-wrapper">
+                                                    <div class="image-inner">
+                                                        <img class="image-sq slick-img" src="{{data.photo2.url}}" alt="" data-gallery="gallery" data-caption="Car 02">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <!-- Slide 03-->
+                                            <div>
+                                                <div class="caption-content"></div>
+                                        
+                                                <div class="image-wrapper">
+                                                    <div class="image-inner">
+                                                        <img class="image-sq slick-img" src="{{data.photo3.url}}" alt="" data-gallery="gallery" data-caption="Car 03">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                          
+                                        
+                                        </div>
+                                        
+                                        <a class="host-sq" href="/vendor_details/{{data.vendorId.id}}">
+                                            <span class="avatar-sq">
+                                                <img src="{{data.vendorId.profile.url}}" alt="">
+                                            </span>
+                                            <p class="host-name-sq">
+                                    {{data.vendorId.firstName}} 
+                                    {{data.vendorId.lastName}} 
+                                                
+                                            </p>
+                                            
+                                        </a>
+                                    </div>
+                                    
+                                    <h1 class="title-sq">{{data.listingTitle}}</h1>
+                                    
+                                    <div class="icons-row">
+                                       <div class="icons-column">
+                                            <div class="rating-sq">
+                                                <i class="icon icon-heart"></i>
+                                                8.9
+                                            </div>
+                                        </div>
+                                        <div class="icons-column">
+                                       <i class="icon icon-ac"></i>
+                                       {% for d in data.amenities.all %}
+                                               
+                                       {% if d.title == 'A/C'  %}
+                                              {{d.title}}
+                                              
+                                          
+                                       {% endif %}
+                                      
+                                      {% endfor %}
+                                       </div>
+                                       <div class="icons-column">
+                                           <i class="icon icon-gearbox"></i> {{data.gearBox}}
+                                       </div>
+                                       <div class="icons-column">
+                                           <i class="icon icon-user-circle"></i> x {{data.noOfSeats}}
+                                       </div>
+                                    </div>
+                                    
+                                    <p class="description-sq">
+                                        {{data.listingDescription}}
+                                    </p>
+                                    
+                                </div>
+                                
+                                <!-- Right -->
+                                <div class="ui twelve wide mobile six wide computer column">
+                                   
+                                    <form action="" method="post" class="property-checkout-container main-infos">
+                                        {% csrf_token %}
+                                        <input type="number" class="d-none" name="totalprice" value="{{totalprice}}">
+                                        <div class="div-c">
+                                             <label>First Name</label>
+                                             <input type="text" name="firstName" placeholder=" " required>
+                                         </div>
+                                         <div class="div-c">
+                                             <label>Last Name</label>
+                                             <input type="text" name="lastName" placeholder=" " required>
+                                         </div>
+                                         <div class="div-c">
+                                             <label>Contact No</label>
+                                             <input type="text" name="contactNo" placeholder=" " required>
+                                         </div>
+                                         <div class="div-c">
+                                             <label>Email</label>
+                                             <input type="email" name="email" placeholder=" " required>
+                                         </div>
+                                        <div class="div-c">
+                                             <label>Pick up location</label>
+                                             <input type="text" name="Pickup" placeholder=" " required>
+                                         </div>
+                                         
+ 
+                                         <div class="div-c">
+                                             <label>Return location</label>
+                                             <input type="text" placeholder=" " name="Return" required>
+                                         </div>
+                                         <div class="div-c">
+                                             <input type="checkbox" id="checkbox1" name="returnCar" value="yes">
+                                             <label for="checkbox1">Return car to the same location</label>
+                                         </div>
+                                       
+                                         
+                                         
+                                        <div class="div-c inline-2 inline-check-in">
+                                           
+                                            <div class="divided-column calendar-sq" id="sticky-box-rangestart">
+                                                 <label class="placeholder">Check in</label>
+ 
+                                                 <div class="relative-sq">
+                                                     <input type="text" class="filter" value="" required placeholder="date" name="checkIn">
+                                                     
+                                                     <i class="icon icon-little-arrow filters-arrow"></i>
+                                                 </div>
+                                                 
+                                            </div>
+                                             
+                                            <div class="divided-column calendar-sq" id="sticky-box-rangeend">
+ 
+                                                <label class="placeholder">Check Out</label>
+ 
+                                                <input type="text" class="filter" value="" required placeholder="date" name="checkOut">
+ 
+                                            </div>
+                                        </div>
+                                        
+                                        {% comment %} <div class="div-c extras-sq">
+                                             <label class="placeholder">Extras</label>
+                                            
+                                             <div class="divided-column">
+                                                 <input type="checkbox" id="checkbox2">
+                                                 <label for="checkbox2">Child Seat</label>
+                                                 
+                                                 <span class="value-sq">$10</span>
+                                             </div>
+                                             
+                                             <div class="divided-column">
+                                                 <input type="checkbox" id="checkbox3">
+                                                 <label for="checkbox3">Driver</label>
+                                                 
+                                                 <span class="value-sq">$13</span>
+                                             </div>
+                                             
+                                             <div class="divided-column">
+                                                 <input type="checkbox" id="checkbox4">
+                                                 <label for="checkbox4">Neque consequa es nterdum erat consequa es nterdum erat</label>
+                                                 
+                                                 <span class="value-sq">$10</span>
+                                             </div>
+                                             
+                                             <div class="divided-column">
+                                                 <input type="checkbox" id="checkbox5">
+                                                 <label for="checkbox5">Phasellus sed neque consequa es nterdum erat</label>
+                                                 
+                                                 <span class="value-sq">$10</span>
+                                             </div>
+                                            
+                                        </div> {% endcomment %}
+                                        
+                                        
+                                        <div class="div-c total-sq">
+                                            <div class="divided-column">
+                                                <label class="placeholder">Total</label>
+                                                <span class="value-sq">${{totalprice}}</span>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="button-sq fullwidth-sq font-weight-bold-sq" >Instant Booking</button>
+                                        
+                                     </form>
+                                    
+                                 
+                                    
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>    
+                        
+                    </div>
+                </div>
+                
+                <!-- <h3>Location</h3>
+                
+                <div class="map-wrapper shadow-sq">
+                    <div id="map"></div>
+                </div> -->
+                
+                <h3>Reviews</h3>
+                
+                <div class="reviews-header">
+                    <div class="rating-big">
+                        <div class="rating-badge">
+                            <span>9.2</span>
+                            <i class="icon icon-heart"></i>
+                        </div>
+                        <div class="rating-info">
+                            <p>More than <strong>95%</strong> of guests recommend this place</p>
+                        </div>
+                    </div>
+                    <div class="rating-percentage">
+                        <div class="rating-column">
+                            <p class="rating-label"><strong>Accuracy</strong></p>
+                            <div class="basic-progressbar">
+                                <div class="inner" style="width:75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="rating-column">
+                            <p class="rating-label"><strong>Communication</strong></p>
+                            <div class="basic-progressbar">
+                                <div class="inner" style="width:55%"></div>
+                            </div>
+                        </div>
+
+                        <div class="rating-column">
+                            <p class="rating-label"><strong>Location</strong></p>
+                            <div class="basic-progressbar">
+                                <div class="inner" style="width:25%"></div>
+                            </div>
+                        </div>
+
+                        <div class="rating-column">
+                            <p class="rating-label"><strong>Cleanliness</strong></p>
+                            <div class="basic-progressbar">
+                                <div class="inner" style="width:80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="reviews-search">
+                    <form action="#" class="">
+                        <input id="reviews-search" type="text" placeholder="Search reviews" value="" required="">
+                        <label><i class="icon icon-search"></i></label>
+                    </form>
+                </div> -->
+               
+                <div class="reviews-feed">
+                    {% for review in  review %}
+                    <div class="reviews-row">
+                        <div class="review-meta">
+                           
+                            <a class="name-sq" href="javascript:void(0)">{{review.firstName}} {{review.lastName}}</a>
+                        </div>
+
+                        <div class="comment-sq">
+                           <span class="date-sq">{{review.date}}</span>
+
+                            <p>{{review.description}}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                   
+
+                
+
+                 
+                
+                    
+                    
+                    
+
+                    </div>
+              
+                
+            </div>
+        </div>
+    </div>
+    
+ 
+   
+    <br>
+    <br>
+    
+</div>    
+   
+{% endblock body %}

@@ -1,0 +1,29 @@
+{%extends 'public/layout/base.html'%}
+{% load static %}
+{% block body %}
+<div class="container">
+
+   <div class="col-md-6 mt-5 mx-auto">
+       <h2 class="text-uppercase text-center mt-5">Login Vendor</h2>
+       <p class="text-center text-primary ">
+        {% for message in messages %}
+        {{message}} 
+       {% endfor %}
+       </p>
+    <form action="" method="post" class="content mb-4 pb-4">
+        {% csrf_token %}
+        <div class="div-c">
+            <div class="divided-column">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+          
+        </div>
+
+        <button type="submit" class="button-sq fullwidth-sq">Reset</button>
+       
+    </form>
+
+   
+   </div>
+</div>
+{% endblock body %}

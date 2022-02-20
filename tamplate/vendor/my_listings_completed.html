@@ -1,0 +1,123 @@
+{% extends "vendor/layout/base.html" %}
+{% load static %}
+{% block body %}
+  
+<div class="ui layout p-4 mt-4">
+    <div class="ui grid container">
+        <div class="row mx-auto">
+            <div
+                class="ui twelve wide tablet three wide computer three wide widescreen three wide large screen column">
+
+                {% include "vendor/layout/sidebar.html" with active="my_listings" %}
+
+            </div>
+
+            <div
+                class="ui twelve wide tablet nine wide computer nine wide widescreen nine wide large screen column">
+
+                <div class="typo-header-sq">
+                    <div class="ui grid">
+                        <div class="row">
+                            <div class="ui twelve wide computer column">
+                                <h2>My Listings <sup>{{data.count}}</sup></h2>
+                            </div>
+
+                            <div
+                                class="ui twelve wide tablet eight wide computer eight wide widescreen eight wide large screen column">
+                                <ul class="inline-menu-sq list-default-sq list-style-inline-sq">
+                                    <li class="">
+                                        <a href="/my_listings">All</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/my_listings_completed">Completed</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="/my_listings_in_progress">In Progress</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="ui twelve wide tablet four wide computer four wide widescreen four wide large screen column">
+                                <a href="/add_listing" class="button-sq small-sq fullwidth-sq">
+                                    <i class="icon icon-add-1"></i><span>Add New Listing</span></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ui grid">
+
+                    <div class="row">
+                        {% for data in data %}
+                        <div
+                            class="ui twelve wide tablet six wide computer six wide widescreen six wide large screen column">
+                            <div class="property-item caption-sq shadow-sq small-sq">
+                                <div class="property-item-inner">
+
+                                    <div class="price-tag-sq">{{data.price}} &dollar; <span>/ hour</span></div>
+                                    <a class="add-wishlist" href="property_page.html">
+                                        <i class="icon icon-view-solid"></i>
+                                    </a>
+                                    <a class="mt-5 add-wishlist modal-ui-trigger" href=""
+                                    data-trigger-for="wishlist">
+                                    <i class="icon icon-add-wishlist"></i>
+                                </a>
+                                    <a class="image-sq" href="property_page_edit.html">
+                                        <div class="image-wrapper">
+                                            <span class="image-inner">
+                                                <img src="{{data.photo1.url}}" alt=""
+                                                    class="img-fluid" style="width:100%; height:100%;">
+                                            </span>
+                                        </div>
+                                    </a>
+
+                                    <div class="main-details ">
+                                        <p class="progress-status">{{data.status}}</p>
+                                        <div class="title-row">
+                                            <a href="property_page.html" class="title-sq">{{data.listingTitle}}</a>
+                                        </div>
+
+                                        <div class="icons-row">
+                                            <div class="icons-column">
+                                                <i class="icon icon-heart"></i> 8.7
+                                            </div>
+                                            <div class="icons-column">
+                                                <i class="icon icon-ac"></i> 
+                                                {% for d in data.amenities.all %}
+                                               
+                                                 {% if d.title == 'A/C'  %}
+                                                        {{d.title}}
+                                                        
+                                                    
+                                                 {% endif %}
+                                                
+                                                {% endfor %}
+                                                {% comment %} No {% endcomment %}
+                                            </div>
+                                            <div class="icons-column">
+                                                <i class="icon icon-gearbox"></i> {{data.gearBox}}
+                                            </div>
+                                            <div class="icons-column">
+                                                <i class="icon icon-user-circle"></i> x {{data.noOfSeats}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+           
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

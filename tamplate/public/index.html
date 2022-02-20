@@ -1,0 +1,263 @@
+{% extends 'public/layout/base.html' %}
+{% load static %}
+{% block body %}
+
+    
+<div class="ui layout" id="top">
+   	 
+    <div class="light-section-sq">
+        <!-- Hero Full Page -->
+        <div class="hero-search-full-page low-sq next-sq">
+               <!-- Hero Search Vertical Default -->
+               <div class="custom-search text-center">
+                   <form  action="/result" method="get" >
+                <select name="city" class="search-input" style="width:100%; height:40px; padding:30px; border:none;" name="state">
+                    <option>Select City</option>
+                  {% for city in city %}
+                    
+                  <option value="{{city.pk}}">{{city.cityName}}</option>
+                  {% endfor %}
+                  
+                  </select>
+                  <div class="search-item mt-3">
+
+                    <button class="button-sq">
+                        <i class="icon icon-search"></i>
+                        <span>Find a car</span>
+                    </button>
+
+                </div>
+            </form>
+                
+               </div>
+               <!-- <div class="h-search-v narrow-sq animate-sq shadow-sq">
+                    <form action="/result" method="get" class="hero-search-form">
+                    <div class="search-item">
+                        <select class="form-control form-control js-example-basic-single" name="state">
+                            <option>Select City</option>
+                          {% for city in city %}
+                            
+                          <option value="{{city.cityName}}">{{city.cityName}}</option>
+                          {% endfor %}
+                          
+                          </select>
+                    </div>
+                        <div class="search-item">
+                            <i class="icon icon-pickup-location"></i>
+                            <div class="fltp">
+                                <input type="text" value="" required>
+                                <label class="placeholder" data-big-placeholder="Pickup location" data-little-placeholder="Pickup location"></label>
+                            </div>
+                        </div>
+
+                        <div class="search-item">
+                            <i class="icon icon-return-location"></i>
+                            <div class="fltp">
+                                <input type="text" value="" required>
+                                <label class="placeholder" data-big-placeholder="Return location" data-little-placeholder="Return location"></label>
+                            </div>
+                        </div>
+
+                        <div class="search-item">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="checkbox11">
+                                <label for="checkbox11">Return car to pickup location</label>
+                            </div>
+                        </div>
+
+                        <div class="search-item">
+                            <i class="icon icon-pickup-date"></i>
+                            <div class="fltp calendar-sq" id="rangestart">
+                                <input type="text" class="filter" value="" required placeholder="enter date">
+                                <label class="placeholder"  data-big-placeholder="Pickup date" data-little-placeholder="Pickup date"></label>
+                            </div>
+                        </div>
+                        
+                        <div class="search-item">
+                            <i class="icon icon-return-date"></i>
+                            <div class="fltp calendar-sq" id="rangeend">
+                                <input type="text" class="filter" value="" required placeholder="enter date">
+                                <label class="placeholder"  data-big-placeholder="Return date" data-little-placeholder="Return date"></label>
+                            </div>
+                        </div>
+
+                        <div class="search-item">
+
+                            <button class="button-sq">
+                                <i class="icon icon-search"></i>
+                                <span>Find a car</span>
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div> -->
+
+               <!-- Hero Big - Slick -->
+               <div class="sq-slick hero-big slide-up-sq left-sq" data-mobile-arrows="false" data-tablet-arrows="false" data-mobile-dots="true" data-fade="true" data-speed="500" data-ease="linear">
+                   <!-- .slide-up .fade .top .bottom -->
+
+                   <!--Slide 01-->
+                    <div class="">
+                        <div class="caption-content">
+                           <h1>Easy and fast <br>Rent a car</h1>
+                           <p>In hac habitasse platea dictumst. Integer quis tortor enim. Integer et elit nec magna ultricies convallis. In venenatis eu erat et facilisis.</p>
+                        </div>
+                        <div class="caption-outside">
+                            <a class="button-sq link-sq" href="property_page.html">
+                                <i class="icon big icon-slim-arrow-right"></i>
+                                <span>read more</span>
+                            </a>
+                        </div>
+
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/BDCU5OFXZ2c?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&start=15&mute=1" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+           </div>
+        
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <div class="typo-section-sq top-default bottom-default">
+                        <h2 class="heading-inline text-align-center-sq">
+                            <i class="icon icon-slim-arrow-left sq-prev-button"></i>
+                            <span>Our Parteners</span>
+                            <i class="icon icon-slim-arrow-right sq-next-button"></i>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ui grid container typo-section-sq bottom-default">
+            <div class="row">
+                <div class="sq-slick article-sq-slick" data-arrows="false" data-center-mode="true" data-center-padding="0px" data-desktop-center-padding="0px" data-show-slides="5" data-scroll-slides="3" data-tablet-show-slides="2" data-tablet-scroll-slides="2" data-mobile-show-slides="3" data-mobile-scroll-slides="3" data-tablet-center-padding="0px" data-mobile-center-padding="50px">
+
+                    <!-- Slide 01-->
+                    <div>
+                        <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_001.jpg" alt="">
+                      </div>
+                    </div>
+
+                    <!-- Slide 02-->
+                    <div>
+                      <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_002.jpg" alt="">
+                      </div>
+                    </div>
+
+                    <!-- Slide 03-->
+                    <div>
+                      <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_001.jpg" alt="">
+                      </div>
+                    </div>
+
+                    <!-- Slide 04-->
+                    <div>
+                      <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_002.jpg" alt="">
+                      </div>
+                    </div>
+
+                    <!-- Slide 05-->
+                    <div>
+                      <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_001.jpg" alt="">
+                      </div>
+                    </div>
+
+                    <!-- Slide 06-->
+                    <div>
+                      <div class="caption-content">
+                         <img src="{% static '' %}public/assets/images/partener_002.jpg" alt="">
+                      </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+   
+    </div>
+    <div class="typo-section-sq bottom-default">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui twelve wide mobile twelve wide tablet twelve wide computer column">
+                    <div class="typo-section-header-sq">
+                        <h2 class="text-align-center-sq">Popular Cars</h2>
+                    </div>
+                </div>
+ {% for data in data %}
+ <div class="ui twelve wide mobile six wide tablet four wide computer column">
+    <div class="property-item caption-sq shadow-sq small-sq">
+        <div class="property-item-inner">
+
+           <div class="price-tag-sq">{{data.price}} &dollar; <span>/ hour</span></div>
+          
+
+            <a class="image-sq" href="/cars_details/{{data.carId}}">
+                <div class="image-wrapper">
+                    <span class="image-inner">
+                        <img src="{{data.photo1.url}}" alt="" class="">
+                    </span>
+                </div>
+            </a>
+
+            <div class="main-details">
+               <div class="title-row">
+                   <a href="/cars_details/{{data.carId}}" class="title-sq">{{data.listingTitle}}</a>
+               </div>
+
+               <div class="icons-row">
+                   <div class="icons-column">
+                       <i class="icon icon-heart"></i> 8.7
+                   </div>
+                   <div class="icons-column">
+                       <i class="icon icon-ac"></i>
+                       {% for d in data.amenities.all %}
+                                               
+                       {% if d.title == 'A/C'  %}
+                              {{d.title}}
+                              
+                          
+                       {% endif %}
+                      
+                      {% endfor %}
+                   </div>
+                   <div class="icons-column">
+                       <i class="icon icon-gearbox"></i>  {{data.gearBox}}
+                   </div>
+                   <div class="icons-column">
+                       <i class="icon icon-user-circle"></i> x {{data.noOfSeats}}
+                   </div>
+               </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+ {% endfor %}
+               
+
+           
+            
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% block script %}
+  <script>
+      $(document).ready(function() {
+        
+    $('.search-input').select2();
+});
+  </script>
+{% endblock script %}

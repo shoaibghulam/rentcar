@@ -1,0 +1,41 @@
+{%extends 'public/layout/base.html'%}
+{% load static %}
+{% block body %}
+<div class="container">
+
+   <div class="col-md-6 mt-5 mx-auto">
+       <h2 class="text-uppercase text-center mt-5">Login Vendor</h2>
+       <p class="text-center text-primary ">
+        {% for message in messages %}
+        {{message}} 
+       {% endfor %}
+       </p>
+    <form action="" method="post" class="content">
+        {% csrf_token %}
+        <div class="div-c">
+            <div class="divided-column">
+                <input type="text" name="email" placeholder="E-mail Adress" required>
+            </div>
+            <div class="divided-column">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+        </div>
+        <p><a href="/vendorforget">Foregt Password </a></p>
+        <button type="submit" class="button-sq fullwidth-sq">Login</button>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+    </form>
+
+    <div class="actions text-center">
+        <div class="border-container">
+            <div class="button-sq link-sq modal-ui-trigger" data-trigger-for="modal01">Don’t have an account?</div>
+<br>
+            <div class="button-sq link-sq login-sq" >
+                <a href="/register">  Sign Up
+                <i class="icon icon-person-add-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>
+{% endblock body %}

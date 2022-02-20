@@ -1,0 +1,226 @@
+// main: ../semantic.less
+
+// *** Icon ***
+
+// *** Icon Variables ***
+
+@fontName: @fontIconsName;
+@fallbackSRC: url("@{fontPath}/@{fontName}.eot");
+@src:
+  url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
+  url("@{fontPath}/@{fontName}.woff2") format('woff2'),
+  url("@{fontPath}/@{fontName}.woff") format('woff'),
+  url("@{fontPath}/@{fontName}.ttf") format('truetype'),
+  url("@{fontPath}/@{fontName}.svg#icons") format('svg')
+;
+
+@opacity: 1;
+@width: @iconWidth;
+@height: 1em;
+@distanceFromText: 0.25rem;
+
+//  Variations
+
+@linkOpacity: 0.8;
+@linkDuration: 0.3s;
+@loadingDuration: 2s;
+
+@circularSize: 2em;
+@circularPadding: 0.5em 0.5em;
+@circularShadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+
+@borderedSize: 2em;
+@borderedVerticalPadding: ((@borderedSize - @height) / 2);
+
+@borderedHorizontalPadding: ((@borderedSize - @width) / 2);
+@borderedShadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+
+@cornerIconSize: 0.45em;
+@cornerIconStroke: 1px;
+@cornerIconShadow:
+  -@cornerIconStroke -@cornerIconStroke 0 #fff,
+   @cornerIconStroke -@cornerIconStroke 0 #fff,
+  -@cornerIconStroke  @cornerIconStroke 0 #fff,
+   @cornerIconStroke  @cornerIconStroke 0 #fff
+;
+@cornerIconInvertedShadow:
+  -@cornerIconStroke -@cornerIconStroke 0 #000,
+   @cornerIconStroke -@cornerIconStroke 0 #000,
+  -@cornerIconStroke  @cornerIconStroke 0 #000,
+   @cornerIconStroke  @cornerIconStroke 0 #000
+;
+
+@small: @relativeSmall;
+@medium: 20px; //1em;
+@large: 1.5em;
+@big: 2em;
+@huge: 4em;
+@massive: 8em;
+
+
+@icon-user-circle: "\e957";
+@icon-ac: "\e958";
+@icon-star-2: "\e923";
+@icon-star: "\e924";
+@icon-pin1: "\e91f";
+@icon-pin2: "\e920";
+@icon-pin12: "\e921";
+@icon-pin22: "\e922";
+@icon-messenger: "\e91e";
+@icon-complete: "\e91c";
+@icon-preview: "\e91d";
+@icon-slim-arrow-right: "\e91a";
+@icon-slim-arrow-left: "\e91b";
+@icon-pickup-return-date: "\e915";
+@icon-pickup-location: "\e916";
+@icon-return-location: "\e917";
+@icon-pickup-date: "\e918";
+@icon-return-date: "\e919";
+@icon-compass: "\e914";
+@icon-view-solid: "\e913";
+@icon-side-sticky-menu: "\e912";
+@icon-info-full: "\e90c";
+@icon-heart-line: "\e90d";
+@icon-heart: "\e908";
+@icon-add-wishlist: "\e907";
+@icon-house: "\e905";
+@icon-map: "\e900";
+@icon-little-arrow: "\e901";
+@icon-list: "\e902";
+@icon-filter: "\e903";
+@icon-both: "\e904";
+@icon-bin-1: "\e90f";
+@icon-pencil-1: "\e910";
+@icon-email-2: "\e681";
+@icon-person-add-1: "\e70e";
+@icon-person-check-1: "\e714";
+@icon-person-lock-2: "\e721";
+@icon-filter-heart: "\e999";
+@icon-filter-picture: "\e99b";
+@icon-filter-picture2: "\e911";
+@icon-share: "\e7fb";
+@icon-subtract-1: "\e8bf";
+@icon-location-pin-2: "\e90e";
+@icon-arrow-down-12: "\e953";
+@icon-arrow-left-12: "\e96f";
+@icon-arrow-right-12: "\e97c";
+@icon-arrow-up-12: "\e98d";
+@icon-arrow-down-122: "\e906";
+@icon-arrow-left-122: "\e909";
+@icon-arrow-right-122: "\e90a";
+@icon-arrow-up-122: "\e90b";
+@icon-cog-square: "\e646";
+@icon-cog: "\e647";
+@icon-login-3: "\e660";
+@icon-logout-3: "\e663";
+@icon-alarm: "\e668";
+@icon-account-group-5: "\e6c8";
+@icon-account-group-52: "\e925";
+@icon-video-camera: "\e7ee";
+@icon-books-encyclopedia-1: "\e9cc";
+@icon-drawer-2: "\e9d7";
+@icon-network-signal: "\e82a";
+@icon-wifi-modem-2: "\e852";
+@icon-book-shelf: "\e926";
+@icon-television: "\e927";
+@icon-radio-1: "\e928";
+@icon-radio-2: "\e929";
+@icon-thunderstorm: "\e92a";
+@icon-safe-1: "\ea35";
+@icon-building-2: "\eaaf";
+@icon-building-7: "\eab4";
+@icon-building-8: "\eab5";
+@icon-building-9: "\eab6";
+@icon-building-11: "\eab8";
+@icon-door-simple: "\eac3";
+@icon-garage: "\eac6";
+@icon-home-3: "\eacd";
+@icon-home-5: "\eacf";
+@icon-wooden-fence: "\eadc";
+@icon-boat: "\e949";
+@icon-smoke-free-area: "\e92b";
+@icon-air-conditioner: "\e92c";
+@icon-air-heater: "\e92d";
+@icon-bath-tub: "\e92e";
+@icon-bed-double: "\e92f";
+@icon-bed-single: "\e930";
+@icon-building-hotel: "\e931";
+@icon-cloth-hanger-towel: "\e932";
+@icon-electric-fan: "\e933";
+@icon-fireplace: "\e934";
+@icon-fitness-center: "\e935";
+@icon-food-dome-serving-1: "\e936";
+@icon-shower: "\e937";
+@icon-television2: "\e938";
+@icon-toilet: "\e939";
+@icon-basketball-hoop: "\e93a";
+@icon-raft-boat: "\e94a";
+@icon-tennis: "\e93b";
+@icon-airship: "\e94b";
+@icon-boat-1: "\e94c";
+@icon-boat-2: "\e94d";
+@icon-boat-sail-1: "\e94e";
+@icon-boat-sail-2: "\e94f";
+@icon-boat-steering-wheel: "\e950";
+@icon-gearbox: "\e93c";
+@icon-van-camper: "\e955";
+@icon-armchair-1: "\e93d";
+@icon-armchair-2: "\e93e";
+@icon-computer-desk: "\e93f";
+@icon-couch: "\e940";
+@icon-back-pack: "\e941";
+@icon-sewing-machine: "\e942";
+@icon-lightbulb-4: "\eb0c";
+@icon-cc-camera-1: "\e943";
+@icon-cc-camera-2: "\e944";
+@icon-fire-extinguisher: "\e945";
+@icon-clothes-hanger: "\e946";
+@icon-chairs-umbrella: "\e951";
+@icon-circus-tent: "\e952";
+@icon-tent: "\e954";
+@icon-rocking-horse: "\e947";
+@icon-teddy-bear: "\e948";
+@icon-arrow-down-left-1: "\e956";
+@icon-search: "\e624";
+@icon-close: "\e63c";
+@icon-alarm2: "\e669";
+@icon-account-circle-1: "\e6ba";
+@icon-add-1: "\e8b2";
+@icon-check-22: "\e959";
+@icon-logo-circle-google-plus-22: "\e95a";
+@icon-logo-facebook2: "\e95b";
+@icon-logo-twitter-bird2: "\e95c";
+@icon-arrow-down: "\ea83";
+@icon-arrow-left: "\ea85";
+@icon-arrow-right: "\ea89";
+@icon-arrow-up: "\ea8d";
+@icon-zoom-in: "\e62d";
+@icon-zoom-out: "\e62e";
+@icon-check-2: "\e630";
+@icon-cog2: "\e648";
+@icon-email-22: "\e682";
+@icon-check-circle-22: "\e95d";
+@icon-check-double-22: "\e95e";
+@icon-email-222: "\e95f";
+@icon-search2: "\e960";
+@icon-zoom-in2: "\e961";
+@icon-zoom-out2: "\e962";
+@icon-check-12: "\e963";
+@icon-check-box-1: "\e964";
+@icon-cog22: "\e965";
+@icon-alarm22: "\e966";
+@icon-account-circle-12: "\e967";
+@icon-navigation-drawer-12: "\e968";
+@icon-navigation-show-more-12: "\e969";
+@icon-navigation-show-more-22: "\e96a";
+@icon-lock-close-32: "\e96b";
+@icon-shopping-cart-4: "\e96c";
+@icon-shopping-cart-42: "\e96d";
+@icon-arrow-down2: "\e96e";
+@icon-arrow-left2: "\e970";
+@icon-arrow-right2: "\e971";
+@icon-arrow-up2: "\e972";
+@icon-navigation-drawer-1: "\e9a6";
+@icon-navigation-show-more-1: "\e9b0";
+@icon-navigation-show-more-2: "\e9b1";
+@icon-lock-close-3: "\e9f8";

@@ -1,0 +1,135 @@
+{% extends "vendor/layout/base.html" %}
+{% block body %}
+<div class="ui layout">
+       
+    <!-- grid -->
+    <div class="ui grid container">
+       
+        <div class="row">
+           
+           <div class="ui twelve wide tablet three wide computer three wide widescreen three wide large screen column">
+            {% include "vendor/layout/sidebar.html" with active="my_trips" %}
+                
+           </div>
+           
+           <div class="ui twelve wide tablet nine wide computer nine wide widescreen nine wide large screen column">
+             
+              <div class="typo-header-sq">
+                <div class="ui grid">
+                  <div class="row">
+                    <div class="ui twelve wide computer column mt-4">
+                       <h2>{{data.bookBy.firstName}} {{data.bookBy.lastName}}</h2>
+                       <div class="mt-4"></div>
+                       
+
+
+                      <div class=" inline-3">
+                          <strong>First Name</strong><br>
+                            <p class="ml-3">{{data.firstName}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>First Name</strong><br>
+                            <p class="ml-3">{{data.lastName}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Email</strong><br>
+                            <p class="ml-3">{{data.email}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Contact No</strong><br>
+                            <p class="ml-3">{{data.contactNo}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Pickup Location</strong><br>
+                            <p class="ml-3">{{data.Pickup}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Return Location</strong><br>
+                            <p class="ml-3">{{data.Return}}</p>
+                            <hr>
+                      </div>
+                      
+                      <div class=" inline-3">
+                          <strong>check In Date</strong><br>
+                            <p class="ml-3">{{data.checkIn}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>check Out Date</strong><br>
+                            <p class="ml-3">{{data.checkOut}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Book Date and Time</strong><br>
+                            <p class="ml-3">{{data.BookDateandtime}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>Compnay Name</strong><br>
+                            <p class="ml-3">{{data.car.vendorId.companyName}}</p>
+                            <hr>
+                      </div>
+                    
+                      
+                      <div class=" inline-3">
+                          <strong>car</strong><br>
+                            <p class="ml-3">{{data.car.listingTitle}}</p>
+                            <hr>
+                      </div>
+                      
+                      <div class=" inline-3">
+                          <strong>Return </strong><br>
+                            <p class="ml-3">{{data.returnCar}}</p>
+                            <hr>
+                      </div>
+                      <div class=" inline-3">
+                          <strong>total Price </strong><br>
+                            <p class="ml-3">&dollar;{{data.totalPrice}}</p>
+                            <hr>
+                      </div>
+                      
+                      <div class=" inline-3">
+                          <strong>status</strong><br>
+                          <p class="dashboard-content-sq dashboard-status-sq processing-sq"><strong>{{data.status}}</strong></p>
+                          
+                      </div>
+                      <div class=" inline-3"><br><br>
+                        <strong>Change Status</strong><br>
+                         <form action="" method="post">
+                           {% csrf_token %}
+                           <select name="status" id="">
+                             <option value="Processing">Processing</option>
+                             <option value="Pending payment">Pending payment</option>
+                             <option value="Completed">Completed</option>
+                             <option value="Cancel">Cancel</option>
+                           </select>
+                           <input type="submit" value="update">
+                         </form>
+                          
+                      </div>
+                      
+
+
+                    </div>
+                  </div>
+                 </div>
+               </div>
+               
+               <div class="ui grid mb-5">
+                   <a href="/my_trips">Back</a>
+               </div>
+           </div>
+           
+           
+        </div>
+    </div>
+    
+    
+</div>    
+   
+{% endblock body %}

@@ -1,0 +1,85 @@
+{% extends "vendor/layout/base.html" %}
+{% load static %}
+{% block body %}
+<div class="ui layout">
+       
+    <!-- grid -->
+    <div class="ui grid container">
+       
+        <div class="row">
+           
+           <div class="ui twelve wide tablet three wide computer three wide widescreen three wide large screen column">
+               
+            {% include "vendor/layout/sidebar.html" with active="reviews" %}
+                
+           </div>
+           
+           <div class="ui twelve wide tablet nine wide computer nine wide widescreen nine wide large screen column">
+               <div class="typo-header-sq">
+                <div class="ui grid">
+                  <div class="row">
+                    <div class="ui twelve wide computer column">
+                       <h2>Reviews</h2>
+                       <ul class="inline-menu-sq list-default-sq list-style-inline-sq">
+                            <li class="active">
+                                <a href="reviews.html">For You</a>
+                            </li>
+                            <li class="">
+                                <a href="">From You</a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                  </div>
+                 </div>
+               </div>
+               
+               <div class="ui grid">
+                   <div class="row">
+
+                        <div class="ui twelve wide tablet twelve wide computer twelve wide widescreen twelve wide large screen column">
+                            
+                            {% for review in  review %}
+                            <div class="reviews-row">
+                                <div class="review-meta">
+                                    
+                                    <a class="name-sq" href="javascript:void(0)">{{review.firstName}} {{review.lastName}}</a>
+                                </div>
+        
+                                <div class="comment-sq">
+                                   <span class="date-sq">{{review.date}}</span>
+        
+                                    <p>{{review.description}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                           
+
+                        <br>
+                        <br>
+                        </div>
+                                               
+                       <div class="ui twelve wide tablet twelve wide computer twelve wide widescreen twelve wide large screen column">
+
+                            <ul class="list-default-sq pagination-simple-sq right-sq">
+                                <li class="active"><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                            </ul>
+                            <br>
+
+                        </div>
+                                                
+                   </div>
+               </div>
+           </div>
+           
+           
+        </div>
+    </div>
+    
+    
+</div>    
+   
+{% endblock body %}

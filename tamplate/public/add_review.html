@@ -1,0 +1,72 @@
+{% extends 'public/layout/base.html' %}
+{% load static %}
+{% block body %}
+    
+<div class="ui layout">
+    <div class="ui centered grid container">
+        <div class="row">
+            <div class="ui six wide computer twelve wide tablet column">
+                <br> 
+                <br> 
+               
+                
+                <br>
+                <br>
+                
+                <h3 class="text-align-center-sq block-sq title-sq">Your Review</h3>
+                <br>
+                <form action="" method="post" class="div-c ">
+                   {% csrf_token %}
+
+                    <div class="mx-auto rating ">
+                      <!-- stars start -->
+                      <label>
+                        <input type="radio" name="stars" value="1" />
+                        <span class="icon">★</span>
+                      </label>
+                      <label>
+                        <input type="radio" name="stars" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                      </label>
+                      <label>
+                        <input type="radio" name="stars" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>   
+                      </label>
+                      <label>
+                        <input type="radio" name="stars" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                      </label>
+                      <label>
+                        <input type="radio" name="stars" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                      </label>
+                      <!-- stars end -->
+                    </div>
+                    <hr>
+                    <div class="divided-column">
+                       <textarea name="description"  cols="30" rows="5" placeholder="Feedback"></textarea>
+                    </div>
+                    <hr>
+                    <br>
+                    
+                    <button type="submit" class="button-sq fullwidth-sq">Add Review</button>
+                </form>
+                
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

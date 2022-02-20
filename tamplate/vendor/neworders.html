@@ -1,0 +1,160 @@
+{% extends "vendor/layout/base.html" %}
+{% block body %}
+<div class="ui layout">
+       
+    <!-- grid -->
+    <div class="ui grid container">
+     
+        <div class="row">
+           
+           <div class="ui twelve wide tablet three wide computer three wide widescreen three wide large screen column">
+            {% include "vendor/layout/sidebar.html" with active="new_trips" %}
+                
+           </div>
+           
+           <div class="ui twelve wide tablet nine wide computer nine wide widescreen nine wide large screen column">
+             
+              <div class="typo-header-sq">
+                <div class="ui grid">
+                  <div class="row">
+                    <div class="ui twelve wide computer column">
+                        <div id="root">
+                            <div class="container pt-5">
+                              <div class="row align-items-stretch">
+                                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                                  <div class="wrap">
+                                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Cars<svg
+                                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                                        </path>
+                                      </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{cars}}</span>
+                                  </div>
+                                </div>
+                                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                                  <div class="wrap">
+                                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">income<svg
+                                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                                        </path>
+                                      </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">&dollar;{{totalprice}}</span><span
+                                      class="hind-font caption-12 c-dashboardInfo__subInfo"></span>
+                                  </div>
+                                </div>
+                                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                                  <div class="wrap">
+                                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Completed<svg
+                                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                                        </path>
+                                      </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{complated}}</span>
+                                  </div>
+                                </div>
+                                <div class="c-dashboardInfo col-lg-3 col-md-6">
+                                  <div class="wrap">
+                                    <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Cancel<svg
+                                        class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path
+                                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                                        </path>
+                                      </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{cancel}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                       <h2>Trips</h2>
+
+                       <ul class="inline-menu-sq list-default-sq list-style-inline-sq">
+                        <li class="active">
+                            <a href="/new_orders">New Orders</a>
+                        </li>
+                        <li class="">
+                            <a href="/pending_payment">Pending payment</a>
+                        </li>
+                       
+                   </ul>
+                    </div>
+                  </div>
+                 </div>
+               </div>
+               
+               <div class="ui grid">
+                   <div class="row">
+                        
+
+                        <div class="ui twelve wide tablet twelve wide computer twelve wide widescreen twelve wide large screen column"> 
+
+                            <div class="ui grid">
+                                {% for data in  data %}
+                               <div class="ui twelve wide mobile six wide tablet six wide computer four wide widescreen four wide large screen column">
+                                    <div class="dashboard-order-boxes-sq">
+                                        <span class="dashboard-label-sq">{{data.BookDateandtime}}</span>
+                                        <p class="dashboard-content-sq">Id nr. &nbsp;<strong>{{data.pk}}</strong></p>
+
+                                        <span class="dashboard-label-sq">Car</span>
+                                        <div class="dashboard-content-sq">
+
+                                            <p class="flex-grow-true">{{data.car.listingTitle}}</p>
+                                            <div class="avatar-sq tiny-avatar-sq verified-sq">
+                                                <!-- <img src="assets/images/avatar/avatar_01.jpg" alt=""> -->
+                                            </div>
+
+                                        </div>
+                                        <span class="dashboard-label-sq">Book By</span>
+                                        <div class="dashboard-content-sq">
+
+                                            <p class="flex-grow-true">{{data.bookBy.firstName}} {{data.bookBy.lastName}}</p>
+                                            <div class="avatar-sq tiny-avatar-sq verified-sq">
+                                                <!-- <img src="assets/images/avatar/avatar_01.jpg" alt=""> -->
+                                            </div>
+
+                                        </div>
+
+                                        <span class="dashboard-label-sq">Total</span>
+                                        <p class="dashboard-content-sq"><strong>&dollar;{{data.totalPrice}}</strong></p>
+
+                                        <span class="dashboard-label-sq">Status</span>
+                                        {% if data.status == "Processing" %}
+                                        <p class="dashboard-content-sq dashboard-status-sq processing-sq"><strong>Processing</strong></p>
+                                        {% else %}
+                                        <p class="dashboard-content-sq dashboard-status-sq completed-sq"><strong>Completed</strong></p>
+                                        {% endif %}
+                                       
+
+                                        <a href="/view_order/{{data.pk}}" class="button-sq see-through-sq fullwidth-sq">View <i class="icon icon-slim-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                               
+                            </div>
+
+                        </div>
+
+                        <div class="ui twelve wide tablet twelve wide computer twelve wide widescreen twelve wide large screen column">
+
+                            <ul class="list-default-sq pagination-simple-sq right-sq">
+                                <li class="active"><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                            </ul>
+
+                        </div>
+               </div>
+               </div>
+           </div>
+           
+           
+        </div>
+    </div>
+    
+    
+</div>    
+   
+{% endblock body %}

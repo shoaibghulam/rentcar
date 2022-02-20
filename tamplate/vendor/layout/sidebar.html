@@ -1,0 +1,28 @@
+<div class="sticky-element sticky-desktop sticky-large-desktop under-ths" style="margin-top:50px;">
+
+    <div class="dashboard-sticky mt-4">
+        <div class="dashboard-sticky-inner">
+
+            <div class="dashboard-menu has-submenu">
+                <a href="#" class="item">
+                    <i class="icon icon-side-sticky-menu"></i>
+                </a>
+                <ul class="submenu">
+                    <li class=" {% if active == "new_trips" %} active{% endif %} "><a class="item" href="/new_orders">New Orders</a></li>
+                    <li class=" {% if active == "vendor" %} active{% endif %} "><a class="item" href="/vendor">My Profile</a></li>
+                    <li class=" {% if active == "my_listings" %} active{% endif %}"><a class="item" href="/my_listings">My Listings</a>
+                    </li>
+                    <li class=" {% if active == "my_settings" %} active{% endif %}"><a class="item" href="/my_settings">My Settings</a></li>
+                    {% comment %} <li class=""><a class="item" href="messages.html">Messages</a></li> {% endcomment %}
+                    <li class="{% if active == "my_trips" %} active{% endif %}"><a class="item" href="/trips">Trips</a></li>
+                    {% comment %} <li class=""><a class="item" href="coupons.html">Coupons</a></li> {% endcomment %}
+                    {% comment %} <li class=""><a class="item" href="charts.html">Reports</a></li> {% endcomment %}
+                    <li class="{% if active == "reviews" %} active{% endif %}"><a class="item" href="/reviews">Reviews</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
