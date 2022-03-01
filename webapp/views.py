@@ -39,7 +39,8 @@ class HomeView(View):
 class RegisterView(View):
     def get(self, request):
         context={
-            'title':'Register Vendor'
+            'title':'Register Vendor',
+            'city':CityModels.objects.all().order_by('-cityName'),
         }
         # print(Site.objects.get_current().domain)
         return render(request,'public/register.html',context)
@@ -55,6 +56,7 @@ class RegisterView(View):
                 lastName=request.POST['lastName'],
                 companyName=request.POST['companyName'],
                 contactNo=request.POST['contactNo'],
+                city=CityModels.objects.get(pk=request.POST['city']),
                 email=email,
                 password= handler.hash(request.POST['password']),
                 token=verifyToken
@@ -217,10 +219,12 @@ class VendorView(View):
 class MyLestingView(View):
     def get(self, request):
         if request.session.has_key('login'):
+        #    wooow
            
             context={
                 'title':'Car Listing',
-                'data':CarsModel.objects.all(),
+                'data':CarsModel.objects.filter(vendorId=request.session['id']),
+                   
             }
             return render(request, 'vendor/my_listings.html',context)
 
@@ -272,8 +276,6 @@ class AddListingView(View):
             address=request.POST['address'],
             price=float(request.POST['price']),
             cleaningFee=float(request.POST['cleaningFee']),
-            monthlyDiscount=int(request.POST['monthlyDiscount']),
-            weeklyDiscount=int(request.POST['weeklyDiscount']),
             listingTitle=request.POST['listingTitle'],
             listingDescription=request.POST['listingDescription'],
             rules=request.POST['rules'],
@@ -423,7 +425,7 @@ class CarDetials(View):
                 totalPrice=request.POST['totalprice']
         )
         insertData.save()
-        return redirect('/')
+        return redirect('/thank_you')
 
 class UserProfileView(View):
     def get(self, request):
@@ -676,3 +678,16 @@ class ResultView(View):
             'city':CityModels.objects.all().order_by('-cityName')
         }
         return render(request,'public/listing_page.html',context)
+
+
+
+
+
+        # new edition start here
+class ThankYouUser(View):
+    def get(self, request):
+        context={
+            'title':'Thank You',
+        }
+        return render(request,'public/thank_you.html',context)
+        # new edition start end

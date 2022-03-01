@@ -65,6 +65,20 @@
 
                     </div>
                     <!-- input end -->
+               <!-- input start -->
+                    <div class="input-group mb-3">
+                      <select name="city" class="search-input" style="width:100%; height:40px; padding:30px; border:none;" name="state">
+                        <option>Select City</option>
+                      {% for city in city %}
+                        
+                      <option value="{{city.pk}}">{{city.cityName}}</option>
+                      {% endfor %}
+                      
+                      </select>
+                    
+
+                    </div>
+                    <!-- input end -->
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
                         <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
@@ -85,3 +99,12 @@
     </div>
 </div>
 {% endblock body %}
+
+{% block script %}
+  <script>
+      $(document).ready(function() {
+        
+    $('.search-input').select2();
+});
+  </script>
+{% endblock script %}

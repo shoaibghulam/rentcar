@@ -36,6 +36,7 @@ urlpatterns = [
     path('pending_payment',VendorPendingPaymentView.as_view(), name='pending_payment'),
     path('add_review/<int:id>',AddReview.as_view(), name='add_review'),
     path('result',ResultView.as_view(), name='result'),
+    path('thank_you',ThankYouUser.as_view(), name='thank_you'),
     # new edition end
   
 ]

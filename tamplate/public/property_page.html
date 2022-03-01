@@ -78,12 +78,12 @@
                                     <h1 class="title-sq">{{data.listingTitle}}</h1>
                                     
                                     <div class="icons-row">
-                                       <div class="icons-column">
+                                       <!-- <div class="icons-column">
                                             <div class="rating-sq">
                                                 <i class="icon icon-heart"></i>
                                                 8.9
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="icons-column">
                                        <i class="icon icon-ac"></i>
                                        {% for d in data.amenities.all %}
@@ -115,7 +115,7 @@
                                    
                                     <form action="" method="post" class="property-checkout-container main-infos">
                                         {% csrf_token %}
-                                        <input type="number" class="d-none" name="totalprice" value="{{totalprice}}">
+                                        <input id="totalPrice" type="number" class="d-none" name="totalprice" >
                                         <div class="div-c">
                                              <label>First Name</label>
                                              <input type="text" name="firstName" placeholder=" " required>
@@ -155,7 +155,7 @@
                                                  <label class="placeholder">Check in</label>
  
                                                  <div class="relative-sq">
-                                                     <input type="text" class="filter" value="" required placeholder="date" name="checkIn">
+                                                     <input id="checkIn" type="text" class="filter" value="" required placeholder="date" name="checkIn">
                                                      
                                                      <i class="icon icon-little-arrow filters-arrow"></i>
                                                  </div>
@@ -166,7 +166,7 @@
  
                                                 <label class="placeholder">Check Out</label>
  
-                                                <input type="text" class="filter" value="" required placeholder="date" name="checkOut">
+                                                <input id="checkOut" type="text" class="filter" required placeholder="date" name="checkOut">
  
                                             </div>
                                         </div>
@@ -207,8 +207,18 @@
                                         
                                         <div class="div-c total-sq">
                                             <div class="divided-column">
+                                                <label class="placeholder">Cleaning Fees</label>
+                                                <span class="value-sq" id="showTotal">${{data.cleaningFee}}</span>
+                                                
+                                            </div>
+                                            <div class="divided-column">
+                                                <label class="placeholder">Rent per Day</label>
+                                                <span class="value-sq" id="showTotal">${{data.price}}</span>
+                                                
+                                            </div>
+                                            <div class="divided-column">
                                                 <label class="placeholder">Total</label>
-                                                <span class="value-sq">${{totalprice}}</span>
+                                                <span class="value-sq" id="showTotal">${{totalprice}}</span>
                                                 
                                             </div>
                                         </div>
@@ -325,3 +335,25 @@
 </div>    
    
 {% endblock body %}
+{% block script %}
+<script>
+    $(document).ready(function(){
+        var checkInValue;
+        var checkOutValue;
+        $("#checkIn").blur(function(){
+            var val=$("#checkIn").val();
+            checkInValue = val.split("-");
+
+          console.log("the checkout ",checkInValue[0]);
+        });
+          $("#checkOut").blur(function(){
+            var val=$("#checkOut").val();
+            // alert(checkInVal)
+            const checkOutValue = val.split("-");
+            var totalprice=(parseInt(checkOutValue[0])-parseInt(checkInValue[0])+1)*parseInt({{totalprice}});
+         $('#showTotal').html(totalprice);
+         $('#totalPrice').val(totalprice);
+});
+    })
+    </script>
+{% endblock script %}
