@@ -1,0 +1,137 @@
+{% extends 'public/layout/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="ui layout" style="margin-top:50px">
+	<!-- grid -->
+	<div class="ui grid container centered">
+	  
+	  
+		<div class="switch-view-controller hidden-desktop hidden-large-desktop">
+
+			<a href="" class="modal-trigger item hidden-desktop hidden-large-desktop" data-trigger-for="menu02">
+				<i class="icon icon-filter"></i>
+				<span>Filters</span>
+			</a>
+		</div>
+				
+		<div class="col-md-12 mb-4 result-search  text-center">
+			<p class="mt-2">Find Car in your City</p>
+			<form  action="/result" class="mt-2" method="get" >
+		 <select name="city" class="search-input" style="width:100%; height:40px; padding:30px; border:none;" name="state">
+			 <option>Select City</option>
+		   {% for city in city %}
+			 
+		   <option value="{{city.pk}}">{{city.cityName}}</option>
+		   {% endfor %}
+		   
+		   </select>
+		   <div class="search-item mt-3">
+
+			 <button class="button-sq">
+				 <i class="icon icon-search"></i>
+				 <span>Find a car</span>
+			 </button>
+
+		 </div>
+	 </form>
+		 
+		</div>
+		{% for data in data %}
+		<div class="ui twelve wide mobile six wide tablet four wide computer column">
+		   <div class="property-item caption-sq shadow-sq small-sq">
+			   <div class="property-item-inner">
+	   
+				  <div class="price-tag-sq">{{data.price}} &dollar; <span>/ Day</span></div>
+				 
+	   
+				   <a class="image-sq" href="/cars_details/{{data.carId}}">
+					   <div class="image-wrapper">
+						   <span class="image-inner">
+							   <img src="{{data.photo1.url}}" alt="" class="">
+						   </span>
+					   </div>
+				   </a>
+	   
+				   <div class="main-details">
+					  <div class="title-row">
+						  <a href="/cars_details/{{data.carId}}" class="title-sq">{{data.listingTitle}}</a>
+					  </div>
+	   
+					  <div class="icons-row">
+						  <div class="icons-column">
+							  <i class="icon icon-heart"></i> 8.7
+						  </div>
+						  <div class="icons-column">
+							  <i class="icon icon-ac"></i>
+							  {% for d in data.amenities.all %}
+													  
+							  {% if d.title == 'A/C'  %}
+									 {{d.title}}
+									 
+								 
+							  {% endif %}
+							 
+							 {% endfor %}
+						  </div>
+						  <div class="icons-column">
+							  <i class="icon icon-gearbox"></i>  {{data.gearBox}}
+						  </div>
+						  <div class="icons-column">
+							  <i class="icon icon-user-circle"></i> x {{data.noOfSeats}}
+						  </div>
+					  </div>
+				   </div>
+	   
+			   </div>
+		   </div>
+	   </div>
+		{% endfor %}
+			
+		
+	</div>
+	<!--end ui container-->
+	
+</div>
+	
+<!-- Wishlist -->
+<div class="ui modal small" data-for="wishlist">
+	<i class="icon icon-close close-modal"></i>
+
+	<div class="header center">
+		<h4>Wishlist</h4>
+	</div>
+
+	<div class="content">
+		<p>Mauris malesuada leo libero, vitae tempor ante sagittis vitae. Suspendisse consectetur facilisis enim.</p>
+		<br>
+		<input type="checkbox" id="c01">
+		<label for="c01">Beautiful Cars</label>
+		<input type="checkbox" id="c02">
+		<label for="c02">For Summer</label>
+		<input type="checkbox" id="c03">
+		<label for="c03">Dream Cars</label>
+	</div>
+
+	<div class="actions">
+		<div class="div-c inline-2">
+			<div class="divided-column">
+				<div class="button-sq cancel-sq fullwidth-sq">Cancel</div>
+			</div>
+
+			<div class="divided-column">
+				<div class="button-sq fullwidth-sq">OK</div>
+			</div>
+		</div>
+	</div>
+</div>
+	 
+{% endblock body %}
+{% block script %}
+  <script>
+      $(document).ready(function() {
+        
+    $('.search-input').select2();
+});
+  </script>
+{% endblock script %}

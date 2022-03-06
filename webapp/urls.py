@@ -37,6 +37,7 @@ urlpatterns = [
     path('add_review/<int:id>',AddReview.as_view(), name='add_review'),
     path('result',ResultView.as_view(), name='result'),
     path('thank_you',ThankYouUser.as_view(), name='thank_you'),
+    path('all_cars',AllCarsview.as_view(), name='all_cars'),
     # new edition end
   
 ]

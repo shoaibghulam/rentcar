@@ -78,12 +78,10 @@
                                     <h1 class="title-sq">{{data.listingTitle}}</h1>
                                     
                                     <div class="icons-row">
-                                       <!-- <div class="icons-column">
-                                            <div class="rating-sq">
-                                                <i class="icon icon-heart"></i>
-                                                8.9
-                                            </div>
-                                        </div> -->
+                                       <div class="icons-column">
+                                     
+                                        ${{data.price}}
+                                        </div>
                                         <div class="icons-column">
                                        <i class="icon icon-ac"></i>
                                        {% for d in data.amenities.all %}
@@ -208,14 +206,14 @@
                                         <div class="div-c total-sq">
                                             <div class="divided-column">
                                                 <label class="placeholder">Cleaning Fees</label>
-                                                <span class="value-sq" id="showTotal">${{data.cleaningFee}}</span>
+                                                <span class="value-sq" >${{data.cleaningFee}}</span>
                                                 
                                             </div>
-                                            <div class="divided-column">
+                                            <!-- <div class="divided-column">
                                                 <label class="placeholder">Rent per Day</label>
-                                                <span class="value-sq" id="showTotal">${{data.price}}</span>
+                                                <span class="value-sq">${{data.price}}</span>
                                                 
-                                            </div>
+                                            </div> -->
                                             <div class="divided-column">
                                                 <label class="placeholder">Total</label>
                                                 <span class="value-sq" id="showTotal">${{totalprice}}</span>
@@ -351,7 +349,7 @@
             // alert(checkInVal)
             const checkOutValue = val.split("-");
             var totalprice=(parseInt(checkOutValue[0])-parseInt(checkInValue[0])+1)*parseInt({{totalprice}});
-         $('#showTotal').html(totalprice);
+         $('#showTotal').html(`$${totalprice}`);
          $('#totalPrice').val(totalprice);
 });
     })

@@ -31,7 +31,7 @@ class HomeView(View):
     def get(self, request):
         context={
             'title':'The A Rent Car',
-            'data':CarsModel.objects.filter(status="Completed"),
+            'data':CarsModel.objects.filter(status="Completed")[0:3],
             'city':CityModels.objects.all().order_by('-cityName')
         }
         return render(request,'public/index.html',context)
@@ -675,6 +675,20 @@ class ResultView(View):
         context={
             'title':'Search Result',
             'data':CarsModel.objects.filter(vendorId__city=id).order_by('-pk'),
+            'city':CityModels.objects.all().order_by('-cityName')
+        }
+        return render(request,'public/listing_page.html',context)
+
+
+
+
+class AllCarsview(View):
+    def get(self, request):
+      
+       
+        context={
+            'title':'Cars',
+            'data':CarsModel.objects.all().order_by('-pk'),
             'city':CityModels.objects.all().order_by('-cityName')
         }
         return render(request,'public/listing_page.html',context)
