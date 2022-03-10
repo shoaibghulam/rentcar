@@ -298,7 +298,15 @@
                     <div class="div-c">
                         <div class="div-c">
                             <label>City</label>
-                            <input type="text" name="city" placeholder="Type Location">
+                            <select name="city"  name="state">
+                                <option>Select City</option>
+                              {% for city in city %}
+                                
+                              <option value="{{city.cityName}}">{{city.cityName}}</option>
+                              {% endfor %}
+                              
+                              </select>
+
                         </div>
                     </div>
 

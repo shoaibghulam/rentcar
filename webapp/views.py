@@ -255,6 +255,7 @@ class AddListingView(View):
            context={
                'title':'Adding Cars',
                'data':AmenitiesModel.objects.all(),
+               'city':CityModels.objects.all().order_by('-cityName'),
            }
            return render(request, 'vendor/add_listing.html',context)
     def post(self, request):
@@ -670,11 +671,11 @@ class AddReview(View):
 
 class ResultView(View):
     def get(self, request):
-        id=request.GET.get('city')
+        cityname=request.GET.get('city')
        
         context={
             'title':'Search Result',
-            'data':CarsModel.objects.filter(vendorId__city=id).order_by('-pk'),
+            'data':CarsModel.objects.filter(Q(city=cityname)).order_by('-pk'),
             'city':CityModels.objects.all().order_by('-cityName')
         }
         return render(request,'public/listing_page.html',context)
