@@ -38,6 +38,8 @@ urlpatterns = [
     path('result',ResultView.as_view(), name='result'),
     path('thank_you',ThankYouUser.as_view(), name='thank_you'),
     path('all_cars',AllCarsview.as_view(), name='all_cars'),
+    path('edit_listing/<int:id>',EditListingView.as_view(), name='edit_listing'),
+    path('delete_listing/<int:id>',DeleteListingView.as_view(), name='delete_listing'),
     # new edition end
   
 ]

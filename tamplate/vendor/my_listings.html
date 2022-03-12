@@ -56,11 +56,15 @@
                             <div class="property-item caption-sq shadow-sq small-sq">
                                 <div class="property-item-inner">
 
-                                    <div class="price-tag-sq">{{data.price}} &dollar; <span>/ hour</span></div>
+                                    <div class="price-tag-sq">{{data.price}} &dollar; <span>/ day</span></div>
                                    
-                                    <a class="mt-5 add-wishlist modal-ui-trigger" href="#"
-                                    data-trigger-for="wishlist">
+                                    <a class="add-wishlist" href="/edit_listing/{{data.pk}}"
+                                    >
                                     <i class="icon icon-add-wishlist"></i>
+                                </a>
+                                    <a class="mt-5 add-wishlist" href="/delete_listing/{{data.pk}}"
+                                    data-trigger-for="wishlist">
+                                    <img src="https://img.icons8.com/wired/64/ffffff/filled-trash.png"/>
                                 </a>
                                     <a class="image-sq" href="/cars_details/{{data.pk}}">
                                         <div class="image-wrapper">

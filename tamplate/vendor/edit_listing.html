@@ -1,0 +1,622 @@
+{% extends 'vendor/layout/base.html' %}
+{% load static %}
+{% block body %}
+<section id="p1">
+<div class="add-listing-content ">
+    <div class="ui centered grid container mb-4">
+        <div class="row">
+            <div class="ui six wide computer twelve wide tablet column">
+                <h3 class="text-align-center-sq block-sq title-sq">Update Listing</h3>
+                
+                <p class="description-sq text-align-center-sq">Choose the type of your listing and follow the steps to complete your listing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="add-listing-footer mt-5">
+   <div class="ui grid container">
+       <div class="row">
+           <div class="ui column">
+               <a class="button-sq link-sq" href="javascript:void(0)" >
+                   <span>skip this step</span>
+                   <i class="icon icon-slim-arrow-right"></i>
+               </a>
+               
+                   
+               <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p2','p1')"><i class="icon icon-slim-arrow-right"></i></a>
+           </div>
+       </div>
+   </div>
+</div>
+</section>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<section style="display:none;" class="mb-5" id="p2">
+    <div class="add-listing-content ">
+        <div class="ui grid container mb-5">
+            <div class="row">
+                <div class="mb-60 ui six wide computer twelve wide tablet column">
+                     <h3 class="complete-sq title-sq">Car Details</h3>
+
+                     <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                    
+                     
+                     
+                     
+                     
+                     <div class="div-c">
+                         <div class="divided-column">
+                             <label>Car Type</label>
+                             <select class="dropdown"  name="carType" required="required" >
+                                 <option  value="{{details.carType}}" >{{details.carType}}</option>
+                                 <option value="Regular Two Door">Regular Two Door</option>
+                                 <option value="Regular Four Door">Regular Four Door</option>
+                                 <option value="Station Wagons">Station Wagons</option>
+                                 <option value="Minivans">Minivans</option>
+                                 <option value="Sports">Sports</option>
+                                 <option value="Luxury">Luxury</option>
+                             </select>
+                         </div>
+                     </div>
+
+                     <hr>
+
+                     <div class="div-c">
+                         <div class="divided-column">
+                             <label>No of Seats</label>
+                             <select class="dropdown" name="noOfSeats" required="required">
+                                 <option value="{{details.noOfSeats}}">{{details.noOfSeats}}</option>
+                                 <option value="2">2</option>
+                                 <option value="4">4</option>
+                                 <option value="6">6</option>
+                                 <option value="8">8</option>
+                                 <option value="9">9</option>
+                                 <option value="10">10</option>
+                             </select>
+                         </div>
+
+                         <div class="divided-column">
+                             <label>Gearbox</label>
+                             <select class="dropdown" name="gearBox" required="required">
+                                 <option value="{{details.gearBox}}">{{details.gearBox}}</option>
+                                 <option value="Manual">Manual</option>
+                                 <option value="Auto">Auto</option>
+                                 
+                             </select>
+                         </div>
+                         
+                         <div class="divided-column">
+                             <label>Fuel</label>
+                             <select class="dropdown" name="fuel" required="required">
+                     <option value="{{details.fuel}}">{{details.fuel}}</option>
+                                 <option value="Diesel">Diesel</option>
+                                 <option value="Gas">Gas</option>
+                                 <option value="Other">Other</option>
+                             </select>
+                         </div>
+                     </div>
+
+                </div>
+                
+                     
+                <div class="ui six wide computer twelve wide tablet column">
+                     <div class="image-full-height">
+                         <div class="image-wrapper">
+                             <div class="mt-5">
+                                 <img src="{% static '' %}public/assets/images/host/host_05.jpg" alt="" class="mt-4">
+                             </div>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+
+     <div class="add-listing-footer ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p2','p1')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="20%" style="width:20%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p3','p2')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+<section id="p3" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui six wide computer twelve wide tablet column">
+                     <h3 class="complete-sq title-sq">Amenities</h3>
+
+                     <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar.</p>
+                     
+                     <div class="div-c inline-3">
+                       
+                      {% for data in data %}
+                         <div class="divided-column">
+                           {% if data in details.amenities.all %}
+                             <input checked  type="checkbox" id="checkbox{{data.id}}" value="{{data.id}}" name="amenities">
+                             <label for="checkbox{{data.id}}">{{data.title}}</label>
+                            
+                             {% else %}
+                             <input   type="checkbox" id="checkbox{{data.id}}" value="{{data.id}}" name="amenities">
+                             <label for="checkbox{{data.id}}">{{data.title}}</label>
+                             {% endif %}
+                            </div>
+                            {% endfor %} 
+                         
+
+                        
+                         
+                      
+
+                     </div>
+                         
+                </div>
+                
+                <div class="ui six wide computer twelve wide tablet column">
+                     <div class="image-full-height">
+                         <div class="image-wrapper">
+                             <div class="mt-5">
+                                 <img src="{% static '' %}public/assets/images/host/host_08.jpg" alt="" class="mt-4">
+                             </div>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+     <div class="add-listing-footer ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p3','p2')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="35%" style="width:35%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p4','p3')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+<section id="p4" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row">
+               <div class="ui twelve wide tablet twelve wide computer twelve wide widescreen twelve wide large screen column">
+                   <h3 class="complete-sq title-sq">Photos</h3>
+               </div>
+              
+               <div class="ui twelve wide tablet eight wide computer eight wide widescreen eight wide large screen column">
+               
+                    <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                         
+                </div>
+                
+                <div class="ui twelve wide tablet four wide computer four wide widescreen four wide large screen column">
+                    
+                   <p class="description-sq alert-message">
+                        <i class="icon icon-pin1"></i>
+                        Pin the cover photo
+                    </p>
+                </div>    
+                
+                
+                
+            </div>
+            
+            <div class="row photo-upload">
+         
+                 <div class="ui three wide computer six wide tablet twelve wide mobile column">
+                    
+                   
+                    <input type='file' class="d-none" onchange="readURL(this,'imagePreview')" id="imageUpload" name="photo1" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"  >
+                     <div class="photo-upload-item">
+                       <div class="image-wrapper">
+                       
+                               
+                           
+                           <img id="imagePreview" class="image-sqs" src="{{details.photo1.url}}" alt=""/>
+                      
+                       </div>
+
+                   
+
+                     </div>
+                    </label>
+                 </div>
+                 <div class="ui three wide computer six wide tablet twelve wide mobile column">
+                    <input type='file' class="d-none" onchange="readURL(this,'imagePreview2')" id="imageUpload2" name="photo2" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload2"  >
+                     <div class="photo-upload-item">
+                       <div class="image-wrapper">
+                       
+                               
+                           
+                           <img id="imagePreview2" class="image-sqs" src="{{details.photo2.url}}" alt=""/>
+                      
+                       </div>
+
+                   
+
+                     </div>
+                    </label>
+                 </div>
+                 <div class="ui three wide computer six wide tablet twelve wide mobile column">
+                    <input type='file' class="d-none" onchange="readURL(this,'imagePreview3')" id="imageUpload3" name="photo3" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload3"  >
+                     <div class="photo-upload-item">
+                       <div class="image-wrapper">
+                       
+                               
+                           
+                           <img id="imagePreview3" class="image-sqs" src="{{details.photo3.url}}" alt=""/>
+                      
+                       </div>
+
+                   
+
+                     </div>
+                    </label>
+                 </div>
+             
+
+
+              </div>
+        </div>
+     </div>
+     <div class="add-listing-footer ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p4','p3')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="55%" style="width:55%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p5','p4')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+
+<section id="p5" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui six wide computer twelve wide tablet column">
+                    <h3 class="complete-sq title-sq">Location</h3>
+
+                    <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+                        faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                        
+                        
+                        
+                    <div class="div-c">
+                        <div class="div-c">
+                            <label>City</label>
+                            <select name="city" name="state">
+                                <option value="{{details.city}}" >{{details.city}}</option>
+                                <option>Select City</option>
+                              {% for city in city %}
+                                
+                              <option value="{{city.cityName}}">{{city.cityName}}</option>
+                              {% endfor %}
+                              
+                              </select>
+
+                        </div>
+                    </div>
+
+                    <div class="div-c">
+                        <div class="div-c">
+                            <label>Address</label>
+                            <input type="text" name="address" placeholder="Type Address" value="{{details.address}}">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="ui six wide computer twelve wide tablet column">
+                    <div class="image-full-height">
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+     <div class="add-listing-footer ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p5','p4')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="65%" style="width:65%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p6','p5')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+<section id="p6" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row mb-60">
+                <div class="ui six wide computer twelve wide tablet column">
+                     <h3 class="complete-sq title-sq">Prices</h3>
+
+                     <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                     
+                     
+                    
+                     <div class="div-c one-label">
+                         <label>Base Price</label>
+                         
+                         <div class="divided-column">
+                             <div class="base-price-wrapper">
+                                 
+                                <select name="dropdown" class="dropdown post-curency">
+                                     <option value="0">USD</option>
+                                    
+                                </select>
+
+                                 <input type="number" name="price" class="base-price-input" min="0" value="{{details.price}}" required="" placeholder="">
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="div-c">
+                         <div class="divided-column">
+                            <label>Cleaning Fee</label>
+                            <div class="info-wrapper inside-sq ">
+                                <input type="number" min="0" name="cleaningFee" placeholder="Type here" value="{{details.cleaningFee}}" required>
+                             <a class="extra-info" href="">USD <i class="icon icon icon-info-full"></i></a>
+                            </div>
+                         </div>
+                     </div>
+
+                     <hr>
+
+                         
+                </div>
+                
+                <div class="ui six wide computer twelve wide tablet column">
+                     <div class="image-full-height mt-5">
+                         <div class="image-wrapper ">
+                             <div class="">
+                                 <img src="{% static '' %}public/assets/images/host/host_10.jpg" alt="" class="">
+                             </div>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+
+     <div class="add-listing-footer  ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p6','p5')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="75%" style="width:75%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p7','p6')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+<section id="p7" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui six wide computer twelve wide tablet column">
+                     <h3 class="complete-sq title-sq">General</h3>
+
+                     <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                     
+                     
+                   
+                     <div class="div-c">
+                         <div class="divided-column">
+                            <label>Listing Title</label>
+                            <input type="text" name="listingTitle" placeholder="Your listing title" value="{{details.listingTitle}}" required>
+                         </div>
+                     </div>
+
+                     <div class="div-c">
+                         <div class="divided-column">
+                            <label>Listing Description</label>
+                            <textarea  cols="30" rows="5" placeholder="Be clear and descriptive" name="listingDescription" required>{{details.listingDescription}}</textarea>
+                         </div>
+                     </div>
+
+                     <div class="div-c">
+                         <div class="divided-column">
+                            <label>Rules</label>
+                            <textarea  cols="30" rows="5" placeholder="Be clear and descriptive" name="rules" required>{{details.rules}}</textarea>
+                         </div>
+                     </div>
+                         
+                </div>
+                
+                <div class="ui six wide computer twelve wide tablet column">
+                     <div class="image-full-height">
+                         <div class="image-wrapper">
+                             <div class="mt-5">
+                                 <img src="{% static '' %}public/assets/images/host/host_07.jpg" alt="" class="mt-4">
+                             </div>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+
+     <div class="add-listing-footer  ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p7','p6')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="85%" style="width:85%"></div>
+                    </div>
+                        
+                    <a class="button-sq next-sq" href="javascript:void(0)" onclick="nextphase('p8','p7')"><i class="icon icon-slim-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+<section id="p8" style="display: none;">
+    <div class="add-listing-content">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui six wide computer twelve wide tablet column">
+                     <h3 class="complete-sq title-sq">Availability</h3>
+
+                     <p class="description-sq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus magna vel ex semper, in pharetra justo pulvinar. </p>
+                     
+                     
+                     
+                     
+                     <div class="div-c inline-2 inline-check-in">
+                                           
+                         <div class="divided-column calendar-sq" id="sticky-box-rangestart">
+                             <label class="placeholder">Check in</label>
+
+                             <div class="relative-sq">
+                                 <input type="text" class="filter" value="{{details.checkIn}}" required placeholder="date" name="checkIn" >
+
+                                 <i class="icon icon-little-arrow filters-arrow"></i>
+                             </div>
+
+                        </div>
+
+                        <div class="divided-column calendar-sq" id="sticky-box-rangeend">
+
+                            <label class="placeholder">Check Out</label>
+
+                            <input type="text" class="filter" value="{{details.checkOut}}" required placeholder="date" name="checkOut">
+
+                        </div>
+                    </div>
+
+                     <div class="div-c">
+                         <div class="div-c">
+                             <label>Minimum rental period</label>
+                             <select class="dropdown" name="rentalPeriod" required="required">
+                                 <option value="{{details.rentalPeriod}}">{{details.rentalPeriod}}</option>
+                                 <option value="1 week">1 week</option>
+                                 <option value="2 week">2 weeks</option>
+                                 <option value="2 week">3 weeks</option>
+                                 <option value="2 week">4 weeks</option>
+                            </select>
+                         </div>
+                     </div>  
+                     <button type="submit" class="button-sq fullwidth-sq">Update Car</button>
+                         
+                </div>
+                
+                <div class="ui six wide computer twelve wide tablet column">
+                     <div class="image-full-height">
+                         <div class="image-wrapper">
+                             <div class="mt-5">
+                                 <img src="{% static '' %}public/assets/images/host/host_11.jpg" alt="" class="mt-5">
+                             </div>
+                        </div>
+                     </div>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+
+     <div class="add-listing-footer  ">
+        <div class="ui grid container">
+            <div class="row">
+                <div class="ui column">
+                    <a class="button-sq link-sq" href="javascript:void(0)" onclick="previousphase('p8','p7')">
+                        <i class="icon icon-slim-arrow-left"></i><span>back</span>
+                    </a>
+                    
+                    <div class="basic-progressbar dashboard-progressbar-sq">
+                         <div class="inner" data-percentage="100%" style="width:100%"></div>
+                    </div>
+                        
+                  
+                </div>
+            </div>
+        </div>
+     </div>
+</section>
+</form>
+{% endblock body %}
+{% block script %}
+  <script>
+      function nextphase(next,current){
+          $(`#${next}`).show()
+          $(`#${current}`).hide()
+      }
+      function previousphase(next,current){
+          $(`#${next}`).hide()
+          $(`#${current}`).show()
+      }
+
+      function readURL(input,id) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $(`#${id}`).attr('src',e.target.result);
+            // $('#imagePreview').hide();
+            // $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+// $("#imageUpload").change(function() {
+//     readURL(this);
+// });
+  </script>
+{% endblock script %}

@@ -295,7 +295,74 @@ class AddListingView(View):
             return redirect('/my_listings')
 
 
+class EditListingView(View):
+    def get(self, request,id):
+         if request.session.has_key('login'):
+           context={
+               'title':'Adding Cars',
+               'data':AmenitiesModel.objects.all(),
+               'details':CarsModel.objects.get(pk=id),
+               'city':CityModels.objects.all().order_by('-cityName'),
+           }
+           return render(request, 'vendor/edit_listing.html',context)
+    def post(self, request ,id):
+        
+         if request.session.has_key('login'):
+            query=CarsModel.objects.get(pk=1)
+            amenities=request.POST.getlist('amenities')
+            amenititesList=AmenitiesModel.objects.filter(id__in=amenities)
 
+            print("the number of seats is",)
+            query.carType=request.POST['carType']
+            query.noOfSeats=request.POST['noOfSeats']
+            query.gearBox=request.POST['gearBox']
+            query.fuel=request.POST['fuel']
+            if request.FILES.get('photo1'):
+                query.photo1=request.FILES['photo1']
+            
+            if request.FILES.get('photo2'):
+                query.photo2=request.FILES['photo2']
+
+
+            if request.FILES.get('photo3'):
+                query.photo3=request.FILES['photo3']
+            query.city=request.POST['city']
+            query.address=request.POST['address']
+            query.price=float(request.POST['price'])
+            query.cleaningFee=float(request.POST['cleaningFee'])
+            query.listingTitle=request.POST['listingTitle']
+            query.listingDescription=request.POST['listingDescription']
+            query.rules=request.POST['rules']
+            query.checkIn=request.POST['checkIn']
+            query.checkOut=request.POST['checkOut']
+            query.rentalPeriod=request.POST['rentalPeriod']
+           
+            query.save()
+            addinit=CarsModel.objects.get(pk=query.pk)
+  # remove all amenitites start
+            removeinit=AmenitiesModel.objects.all()
+            for rmdata in removeinit:
+
+                addinit.amenities.remove(rmdata)
+                addinit.save()
+            
+            # remove all amenitites end
+           
+          
+            for mydata in amenititesList:
+
+                addinit.amenities.add(mydata)
+                addinit.save()
+            # query.amenities.add(amenititesList)
+
+            return redirect('/my_listings')
+
+
+class DeleteListingView(View):
+    def get(self, request, id):
+        data=CarsModel.objects.get(pk=id)
+        data.delete()
+        return redirect('/my_listings')
 class MySettingsView(View):
     def get(self, request):
         context={
